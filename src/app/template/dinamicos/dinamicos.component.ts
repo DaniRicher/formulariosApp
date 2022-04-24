@@ -1,16 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  } from '@angular/core';
 
+
+interface Persona{
+  nombre:string;
+  favoritos:Favorito[];
+}
+
+interface Favorito{
+  id:number;
+  nombre:string;
+}
 @Component({
   selector: 'app-dinamicos',
   templateUrl: './dinamicos.component.html',
   styles: [
   ]
 })
-export class DinamicosComponent implements OnInit {
+export class DinamicosComponent{
 
-  constructor() { }
+  persona:Persona={
+    nombre:" Daniel",
+    favoritos:[
+      {id:1,nombre: "Metal Gear"},
+      {id:2,nombre: "Death Stranding"},
+    ]
+  }
 
-  ngOnInit(): void {
+  guardar(){
+    console.log('Formulario posteado')
+  }
+  nombrevalido(){
+    console.log('Nombre valido');
+  }
+  eliminar(index:number){
+    this.persona.favoritos.splice(index,1)
   }
 
 }
